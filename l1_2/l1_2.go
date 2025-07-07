@@ -26,10 +26,11 @@ func concurrentSquare() {
 }
 
 // порядок гарантирован из-за использования слайса и обращения по индексу
+// минусы: если
 func concurrentSquareWithSlice() {
 	var wg sync.WaitGroup // создаем вейт-группу для синронизации
-	sliceOfSquares := make([]int, 5)
 	array := [5]int{2, 4, 6, 8, 10}
+	sliceOfSquares := make([]int, len(array))
 	for i, value := range array {
 		wg.Add(1)   // увеличиваем счетчик на единицу при добавлении горутины
 		go func() { // запускаем горутину для конкурентное вычисление квадрата
