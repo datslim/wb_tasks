@@ -31,13 +31,13 @@ func concurrentSquareWithSlice() {
 	array := [5]int{2, 4, 6, 8, 10}
 	sliceOfSquares := make([]int, len(array))
 	for i, value := range array {
-		wg.Add(1)   // увеличиваем счетчик на единицу при добавлении горутины
-		go func() { // запускаем горутину для конкурентного вычисление квадрата
-			defer wg.Done() // откладываем завершение вычислений
-			sliceOfSquares[i] = value * value
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			sliceOfSquares[i] = value * value // записываем полученный результат в слайс по индексу
 		}()
 	}
-	wg.Wait() // ожидаем результат
+	wg.Wait()
 	fmt.Println(sliceOfSquares)
 }
 
