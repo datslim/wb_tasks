@@ -5,22 +5,6 @@ import (
 	"strings"
 )
 
-func main() {
-	var (
-		test1 = "abcd"
-		test2 = "abCdefAaf"
-		test3 = "aabcd"
-		test4 = "абуБАКА"
-		test5 = "aBCD"
-	)
-	fmt.Printf("Результат строки abcd: %v\n", uniqueSymbols(test1))
-	fmt.Printf("Результат строки abCdefAaf: %v\n", uniqueSymbols(test2))
-	fmt.Printf("Результат строки aabcd: %v\n", uniqueSymbols(test3))
-	fmt.Printf("Результат строки абуБАКА: %v\n", uniqueSymbols(test4))
-	fmt.Printf("Результат строки abcd: %v\n", uniqueSymbols(test5))
-
-}
-
 // функция для проверки на то, что символы в строке уникальны (регистр не важен)
 // пример: "abcd" -> true, "abCdefAaf" -> false (повторяются a/A), "aabcd" -> false (повторяются a\a)
 func uniqueSymbols(inputString string) bool {
@@ -35,4 +19,23 @@ func uniqueSymbols(inputString string) bool {
 	}
 
 	return true // возвращаем true, если все символы уникальны
+}
+
+// небольшие тесты
+func main() {
+	var (
+		test1 = "abcd"
+		test2 = "abCdefAaf"
+		test3 = "aabcd"
+		test4 = "абуБАКА"
+		test5 = "aBCD"
+		test6 = "абвгд"
+	)
+	fmt.Printf("Результат строки abcd: %v\n", uniqueSymbols(test1))
+	fmt.Printf("Результат строки abCdefAaf: %v\n", uniqueSymbols(test2))
+	fmt.Printf("Результат строки aabcd: %v\n", uniqueSymbols(test3))
+	fmt.Printf("Результат строки абуБАКА: %v\n", uniqueSymbols(test4))
+	fmt.Printf("Результат строки aBCD: %v\n", uniqueSymbols(test5))
+	fmt.Printf("Результат строки абвгд: %v\n", uniqueSymbols(test6))
+
 }
