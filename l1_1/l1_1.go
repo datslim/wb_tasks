@@ -44,10 +44,10 @@ func (a *Action) GetActionType() string {
 }
 
 func main() {
-	human := newHuman("Мужчина", 25)
-	action := newAction("Танцы", human)
-	fmt.Printf("Возраст: %d\n", action.GetAge()) // напрямую вызываем метод GetAge для Action
-	fmt.Printf("Пол: %s\n", action.GetGender())  // напрямую вызываем метод GetGender для Action
-	fmt.Printf("Тип действия: %s\n", action.GetActionType())
+	Sasha := newHuman("Мужчина", 25)
+	Dancing := newAction("Танцы", Sasha)
+	fmt.Printf("Возраст: %d\n", Dancing.GetAge()) // напрямую вызываем метод GetAge для Action
+	fmt.Printf("Пол: %s\n", Dancing.GetGender())  // напрямую вызываем метод GetGender для Action
+	fmt.Printf("Тип действия: %s\n", Dancing.GetActionType())
 
 }
