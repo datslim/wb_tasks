@@ -13,7 +13,6 @@ func changeTwoInts(first, second *int) {
 	*first += *second
 	*second = *first - *second
 	*first -= *second
-
 }
 
 func main() {
