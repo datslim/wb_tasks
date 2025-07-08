@@ -22,8 +22,10 @@ func reverseString(inputString string) string {
 }
 
 func main() {
-	firstTest := "task"
-	secondTest := "главрыба"
-	fmt.Println(reverseString(firstTest))
-	fmt.Println(reverseString(secondTest))
+	englishString := "task"
+	cyrillicString := "главрыба"
+	emojiString := "😁😎🤩"
+	fmt.Printf("Входная строка: %s, перевернутая строка: %s\n", englishString, reverseString(englishString))
+	fmt.Printf("Входная строка: %s, перевернутая строка: %s\n", cyrillicString, reverseString(cyrillicString))
+	fmt.Printf("Входная строка: %s, перевернутая строка: %s\n", emojiString, reverseString(emojiString))
 }
