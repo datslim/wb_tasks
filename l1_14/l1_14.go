@@ -24,7 +24,7 @@ func detectType(variable any) string {
 // проверяем работу нашей функции
 // используем nil как неизвестный тип
 func main() {
-	variablesOfDifferentTypes := []any{25, "Lorem Ipsum", true, make(chan int), make(chan string), any(nil)}
+	variablesOfDifferentTypes := []any{25, "Lorem Ipsum", true, make(chan int), make(chan string), nil}
 
 	for _, currentType := range variablesOfDifferentTypes {
 		fmt.Println(detectType(currentType))
