@@ -25,7 +25,7 @@ func main() {
 	englishString := "task"
 	cyrillicString := "главрыба"
 	emojiString := "😁😎🤩"
-	fmt.Printf("Входная строка: %s, перевернутая строка: %s\n", englishString, reverseString(englishString))
-	fmt.Printf("Входная строка: %s, перевернутая строка: %s\n", cyrillicString, reverseString(cyrillicString))
-	fmt.Printf("Входная строка: %s, перевернутая строка: %s\n", emojiString, reverseString(emojiString))
+	fmt.Printf("Входная строка: %s\nПеревернутая строка: %s\n", englishString, reverseString(englishString))
+	fmt.Printf("Входная строка: %s\nПеревернутая строка: %s\n", cyrillicString, reverseString(cyrillicString))
+	fmt.Printf("Входная строка: %s\nПеревернутая строка: %s\n", emojiString, reverseString(emojiString))
 }
