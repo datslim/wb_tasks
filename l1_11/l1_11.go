@@ -5,7 +5,7 @@ import (
 	"math/rand"
 )
 
-// функция для нахождения пересечения двух неупорядочных множеств (слайсов)
+// функция для нахождения пересечения двух неупорядочных множеств (слайсов), содержащих любые данные
 // возвращаемое значение: множество пересечений
 func setsIntersection(firstSet, secondSet []any) []any {
 	seenLength := len(firstSet) + len(secondSet)             // длина карты в худшем случае равна сумме длины обоих множеств
@@ -45,7 +45,14 @@ func main() {
 	secondSet := make([]any, 5)
 	randomFillSet(firstSet) // заполняем случайными числами
 	randomFillSet(secondSet)
-	fmt.Printf("Первое множество: %v\n", firstSet)
-	fmt.Printf("Второе множество: %v\n", secondSet)
-	fmt.Printf("Пересечение множеств: %v\n", setsIntersection(firstSet, secondSet)) // получаем и выводим пересечение
+	fmt.Printf("Первое множество чисел: %v\n", firstSet)
+	fmt.Printf("Второе множество чисел : %v\n", secondSet)
+	fmt.Printf("Пересечение множеств чисел: %v\n", setsIntersection(firstSet, secondSet)) // получаем и выводим пересечение
+
+	anySet1 := []any{1, "hello", 3.14, true, "world", "golang"}
+	anySet2 := []any{2, "hello", 3.14, true, "test", "golang"}
+
+	fmt.Printf("Первое множество: %v\n", anySet1)
+	fmt.Printf("Второе множество: %v\n", anySet2)
+	fmt.Printf("Пересечение множеств: %v\n", setsIntersection(anySet1, anySet2))
 }
