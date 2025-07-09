@@ -25,6 +25,7 @@ func setsIntersection(firstSet, secondSet []int) []int {
 	for _, value := range secondSet {
 		if seen[value] {
 			intersection = append(intersection, value)
+			seen[value] = false // убираем флаг, чтобы избежать дубликатов
 		}
 
 	}
