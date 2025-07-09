@@ -7,20 +7,20 @@ import (
 
 // функция для нахождения пересечения двух неупорядочных множеств (слайсов)
 // возвращаемое значение: множество пересечений
-func setsIntersection(firstSet, secondSet []int) []int {
+func setsIntersection(firstSet, secondSet []any) []any {
 	seenLength := len(firstSet) + len(secondSet)             // длина карты в худшем случае равна сумме длины обоих множеств
 	intersectionLength := min(len(firstSet), len(secondSet)) // длина выходного множества не может быть больше длины минимального входного множества
-	// карта для отслеживания вхождений чисел, ключ - число, значение - видели ли такое число до этого
-	seen := make(map[int]bool, seenLength)
+	// карта для отслеживания вхождений чисел, ключ - число, значение - видели ли такой элемент до этого
+	seen := make(map[any]bool, seenLength)
 	// слайс вхождений
-	intersection := make([]int, 0, intersectionLength)
+	intersection := make([]any, 0, intersectionLength)
 
-	// проходимся по первому множеству и проставляем флаги на найденые числа
+	// проходимся по первому множеству и проставляем флаги на найденые элементы
 	for _, value := range firstSet {
 		seen[value] = true
 	}
 
-	// проходимся по второму множеству и если встречаем числа,
+	// проходимся по второму множеству и если встречаем элементы,
 	// которые уже есть в словаре - добавляем в результатирующее множество
 	for _, value := range secondSet {
 		if seen[value] {
@@ -32,8 +32,8 @@ func setsIntersection(firstSet, secondSet []int) []int {
 	return intersection
 }
 
-// функция для случайного заполнения пяти значений для множества чисел
-func randomFillSet(set []int) {
+// функция для случайного заполнения пятью числами для множества элементов
+func randomFillSet(set []any) {
 	for i := range 5 {
 		randomValue := rand.Int() % 10
 		set[i] = randomValue
@@ -41,8 +41,8 @@ func randomFillSet(set []int) {
 }
 
 func main() {
-	firstSet := make([]int, 5) // создаем множество размером 5
-	secondSet := make([]int, 5)
+	firstSet := make([]any, 5) // создаем множество размером 5
+	secondSet := make([]any, 5)
 	randomFillSet(firstSet) // заполняем случайными числами
 	randomFillSet(secondSet)
 	fmt.Printf("Первое множество: %v\n", firstSet)
