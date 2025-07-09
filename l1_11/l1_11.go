@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 // функция для нахождения пересечения двух неупорядочных множеств (слайсов)
 // возвращаемое значение: множество пересечений
@@ -26,8 +29,20 @@ func setsIntersection(firstSet, secondSet []int) []int {
 	return intersection
 }
 
+// функция для случайного заполнения пяти значений для множества чисел
+func randomFillSet(set []int) {
+	for i := range 5 {
+		randomValue := rand.Int() % 10
+		set[i] = randomValue
+	}
+}
+
 func main() {
-	firstSet := []int{1, 2, 3, 1}
-	secondSet := []int{2, 3, 4}
-	fmt.Println(setsIntersection(firstSet, secondSet))
+	firstSet := make([]int, 5) // создаем множество размером 5
+	secondSet := make([]int, 5)
+	randomFillSet(firstSet) // заполняем случайными числами
+	randomFillSet(secondSet)
+	fmt.Printf("Первое множество: %v\n", firstSet)
+	fmt.Printf("Второе множество: %v\n", secondSet)
+	fmt.Printf("Пересечение множеств: %v\n", setsIntersection(firstSet, secondSet)) // получаем и выводим пересечение
 }
