@@ -49,7 +49,7 @@ func main() {
 	fmt.Printf("Второе множество чисел : %v\n", secondSet)
 	fmt.Printf("Пересечение множеств чисел: %v\n", setsIntersection(firstSet, secondSet)) // получаем и выводим пересечение
 
-	anySet1 := []any{1, "hello", 3.14, true, "world", "golang"}
+	anySet1 := []any{1, "hello", 3.14, true, "world", "golang"} // создаем множество, состоящее из различных типов данных
 	anySet2 := []any{2, "hello", 3.14, true, "test", "golang"}
 
 	fmt.Printf("Первое множество: %v\n", anySet1)
