@@ -7,6 +7,7 @@ import "fmt"
 func setsIntersection(firstSet, secondSet []int) []int {
 	// карта для отслеживания вхождений чисел, ключ - число, значение - видели ли такое число до этого
 	seen := make(map[int]bool, 0)
+	// слайс вхождений
 	intersection := make([]int, 0)
 
 	// проходимся по первому множеству и проставляем флаги на найденые числа
