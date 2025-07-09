@@ -10,7 +10,7 @@ import (
 func setsIntersection(firstSet, secondSet []any) []any {
 	seenLength := len(firstSet) + len(secondSet)             // длина словаря в худшем случае равна сумме длины обоих множеств
 	intersectionLength := min(len(firstSet), len(secondSet)) // длина выходного множества не может быть больше длины минимального входного множества
-	// карта для отслеживания вхождений чисел, ключ - число, значение - видели ли такой элемент до этого
+	// карта для отслеживания вхождений чисел, ключ - элемент, значение - видели ли такой элемент до этого
 	seen := make(map[any]bool, seenLength)
 	// слайс вхождений
 	intersection := make([]any, 0, intersectionLength)
@@ -33,7 +33,7 @@ func setsIntersection(firstSet, secondSet []any) []any {
 }
 
 // функция для случайного заполнения слайса, пятью числами
-func randomFillSet(set []any) {
+func fillSetWithRandomNumbers(set []any) {
 	for i := range 5 {
 		randomValue := rand.Int() % 10
 		set[i] = randomValue
@@ -43,8 +43,8 @@ func randomFillSet(set []any) {
 func main() {
 	firstSet := make([]any, 5) // создаем множество размером 5
 	secondSet := make([]any, 5)
-	randomFillSet(firstSet) // заполняем случайными числами
-	randomFillSet(secondSet)
+	fillSetWithRandomNumbers(firstSet) // заполняем случайными числами
+	fillSetWithRandomNumbers(secondSet)
 	fmt.Printf("Первое множество чисел: %v\n", firstSet)
 	fmt.Printf("Второе множество чисел : %v\n", secondSet)
 	fmt.Printf("Пересечение множеств чисел: %v\n", setsIntersection(firstSet, secondSet)) // получаем и выводим пересечение
