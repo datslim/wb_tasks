@@ -32,7 +32,7 @@ func setsIntersection(firstSet, secondSet []any) []any {
 	return intersection
 }
 
-// функция для заполнения слайса случайного числами
+// функция для заполнения слайса случайными числами
 func fillSetWithRandomNumbers(set []any) {
 	for i := range set {
 		randomValue := rand.Int() % 10
