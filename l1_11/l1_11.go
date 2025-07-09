@@ -18,7 +18,7 @@ func setsIntersection(firstSet, secondSet []int) []int {
 	// проходимся по второму множеству и если встречаем числа,
 	// которые уже есть в словаре - добавляем в результатирующее множество
 	for _, value := range secondSet {
-		if seen[value] == true {
+		if seen[value] {
 			intersection = append(intersection, value)
 		}
 
