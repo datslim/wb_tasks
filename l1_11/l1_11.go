@@ -6,18 +6,18 @@ import "fmt"
 // возвращаемое значение: множество пересечений
 func setsIntersection(firstSet, secondSet []int) []int {
 	// карта для подсчета вхождений чисел, ключ - число, значение - видели ли такое число до этого
-	setsMap := make(map[int]bool, 0)
+	seen := make(map[int]bool, 0)
 	intersection := make([]int, 0)
 
 	// проходимся по первому множеству и проставляем флаги на найденые числа
 	for _, value := range firstSet {
-		setsMap[value] = true
+		seen[value] = true
 	}
 
 	// проходимся по второму множеству и если встречаем числа,
 	// которые уже есть в словаре - добавляем в результатирующее множество
 	for _, value := range secondSet {
-		if setsMap[value] == true {
+		if seen[value] == true {
 			intersection = append(intersection, value)
 		}
 
