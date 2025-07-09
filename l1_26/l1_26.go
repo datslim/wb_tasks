@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 // функция для проверки на то, что символы в строке уникальны (регистр не важен)
 // пример: "abcd" -> true, "abCdefAaf" -> false (повторяются a/A), "aabcd" -> false (повторяются a\a)
 func uniqueSymbols(inputString string) bool {
-	seen := make(map[rune]bool)                  // создаем словарь, где ключ - это символ, а значение - встречался ли такой символ
-	lowerRegistr := strings.ToLower(inputString) // переводим все символы в один регистр (нижний)
+	seen := make(map[rune]bool)               // создаем словарь, где ключ - это символ, а значение - встречался ли такой символ
+	lowerRegistr := myOwnToLower(inputString) // переводим все символы в один регистр (нижний)
 
 	for _, symbol := range lowerRegistr { // итерируемся по символам строки в нижнем регистре
 		if seen[symbol] { // если символ уже true, значит символ не уникальный и можно вернуть false
@@ -19,6 +18,25 @@ func uniqueSymbols(inputString string) bool {
 	}
 
 	return true // возвращаем true, если все символы уникальны
+}
+
+// функция для приведения символов кириллицы и латиницы в нижний регистр
+// можно было бы использовать функцию ToLower из библиотеки strings,
+// но для общего развития я написал свою урезанную (из-за поддержки всего 2 алфавитов)
+// версию этой функции
+func myOwnToLower(inputString string) string {
+	inputRunes := []rune(inputString)
+	latinStep := 'A' - 'a'   // латинские А и а
+	cyrllicStep := 'А' - 'а' // кириллические А и а
+	for _, rune := range inputRunes {
+		switch {
+		case rune >= 'A' && rune <= 'Z':
+			rune += latinStep
+		case rune >= 'А' && rune <= 'Я':
+			rune += cyrllicStep
+		}
+	}
+	return string(inputRunes)
 }
 
 // небольшие тесты
