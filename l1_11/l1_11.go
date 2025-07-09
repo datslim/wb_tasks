@@ -1,0 +1,32 @@
+package main
+
+import "fmt"
+
+// функция для нахождения пересечения двух неупорядочных множеств (слайсов)
+// возвращаемое значение: множество пересечений
+func setsIntersection(firstSet, secondSet []int) []int {
+	// карта для подсчета вхождений чисел, ключ - число, значение - видели ли такое число до этого
+	setsMap := make(map[int]bool, 0)
+	intersection := make([]int, 0)
+
+	// проходимся по первому множеству и проставляем флаги на найденые числа
+	for _, value := range firstSet {
+		setsMap[value] = true
+	}
+
+	// проходимся по второму множеству и если встречаем числа,
+	// которые уже есть в словаре - добавляем в результатирующее множество
+	for _, value := range secondSet {
+		if setsMap[value] == true {
+			intersection = append(intersection, value)
+		}
+
+	}
+	return intersection
+}
+
+func main() {
+	firstSet := []int{1, 2, 3, 1}
+	secondSet := []int{2, 3, 4}
+	fmt.Println(setsIntersection(firstSet, secondSet))
+}
