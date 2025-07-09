@@ -11,19 +11,12 @@ func groupTemperatures(temperatures []float64) map[int][]float64 {
 	groupedTemperatures := make(map[int][]float64, len(temperatures))
 
 	for _, value := range temperatures {
-		group := getGroup(value)
+		// -25.4 | -25.4 / 10 = -2.5 | int(-2.5) = -2 | -2 * 10 = -20
+		group := int(value/10) * 10 // получаем группу температур
 		groupedTemperatures[group] = append(groupedTemperatures[group], value)
 	}
-	return groupedTemperatures
-}
 
-// функция для получения группы температур
-// -25.4
-// -25.4 / 10 = -2.5
-// int(-2.5) = -2
-// -2 * 10 = -20
-func getGroup(temperature float64) int {
-	return int(temperature/10) * 10
+	return groupedTemperatures
 }
 
 func main() {
