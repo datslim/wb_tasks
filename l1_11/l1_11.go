@@ -32,11 +32,28 @@ func setsIntersection(firstSet, secondSet []any) []any {
 	return intersection
 }
 
-// функция для случайного заполнения слайса, пятью числами
+// функция для заполнения слайса случайного числами
 func fillSetWithRandomNumbers(set []any) {
-	for i := range 5 {
+	for i := range set {
 		randomValue := rand.Int() % 10
 		set[i] = randomValue
+	}
+}
+
+// функция для заполнения слайса случайными значениями
+func fillSetWithRandomValues(set []any) {
+	// возможные значения для записи
+	possibleValues := []any{
+		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+		"apple", "banana", "orange", "l1", "webdev", "wb-tech", "cat", "dog",
+		1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9,
+		true, false,
+		nil, "golang", "programming", 42, 3.1415,
+	}
+
+	for i := range set {
+		randomIndex := rand.Intn(len(possibleValues))
+		set[i] = possibleValues[randomIndex]
 	}
 }
 
@@ -49,9 +66,11 @@ func main() {
 	fmt.Printf("Второе множество чисел : %v\n", secondSet)
 	fmt.Printf("Пересечение множеств чисел: %v\n", setsIntersection(firstSet, secondSet)) // получаем и выводим пересечение
 
-	anySet1 := []any{1, "hello", 3.14, true, "world", "golang"} // создаем множество, состоящее из различных типов данных
-	anySet2 := []any{2, "hello", 3.14, true, "test", "golang"}
+	anySet1 := make([]any, 10) // создаем множество размером 10
+	anySet2 := make([]any, 10)
 
+	fillSetWithRandomValues(anySet1) // заполняем случайными значениями
+	fillSetWithRandomValues(anySet2)
 	fmt.Printf("Первое множество: %v\n", anySet1)
 	fmt.Printf("Второе множество: %v\n", anySet2)
 	fmt.Printf("Пересечение множеств: %v\n", setsIntersection(anySet1, anySet2))
