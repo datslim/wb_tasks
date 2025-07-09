@@ -32,7 +32,7 @@ func setsIntersection(firstSet, secondSet []any) []any {
 	return intersection
 }
 
-// функция для случайного заполнения пятью числами для множества элементов
+// функция для случайного заполнения слайса, пятью числами
 func randomFillSet(set []any) {
 	for i := range 5 {
 		randomValue := rand.Int() % 10
