@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 	"sync"
+	"time"
 )
 
 // функция для считывания задач из канала и вывода результата
@@ -22,7 +23,8 @@ func worker(workerID int, wg *sync.WaitGroup, jobs <-chan int) {
 // аргументы: канал для отправки задач
 func infiniteFillChan(jobs chan<- int) {
 	for {
-		jobs <- rand.Intn(100) // отправляем случайное число в канал
+		jobs <- rand.Intn(100)      // отправляем случайное число в канал
+		time.Sleep(time.Second * 1) // спим одну секунду
 	}
 }
 
