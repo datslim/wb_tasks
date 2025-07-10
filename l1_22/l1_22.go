@@ -10,12 +10,14 @@ type BigInt struct {
 	value big.Int
 }
 
+// конструктор для создания нового BigInt
 func NewBigInt() *BigInt {
 	return &BigInt{
 		value: *big.NewInt(0),
 	}
 }
 
+// конструктор для создания нового BigInt из int
 func NewBigIntFromInt(value int) *BigInt {
 	return &BigInt{
 		value: *big.NewInt(int64(value)),
