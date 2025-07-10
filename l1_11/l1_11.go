@@ -37,12 +37,14 @@ func main() {
 	secondSet := make([]int, 5)
 	misc.FillSetWithRandomNumbers(firstSet) // заполняем случайными числами
 	misc.FillSetWithRandomNumbers(secondSet)
-	fmt.Printf("Первое множество чисел: %v\nВторое множество чисел: %v\nПересечение множеств чисел: %v\n\n", firstSet, secondSet, setsIntersection(firstSet, secondSet))
+	numbersIntersection := setsIntersection(firstSet, secondSet)
+	fmt.Printf("Первое множество чисел: %v\nВторое множество чисел: %v\nПересечение множеств чисел: %v\n\n", firstSet, secondSet, numbersIntersection)
 
 	anySet1 := make([]any, 10) // создаем множество размером 10
 	anySet2 := make([]any, 10)
 
 	misc.FillSetWithRandomValues(anySet1) // заполняем случайными значениями
 	misc.FillSetWithRandomValues(anySet2)
-	fmt.Printf("Первое множество: %v\nВторое множество: %v\nПересечение множеств: %v\n", anySet1, anySet2, setsIntersection(anySet1, anySet2))
+	anyIntersection := setsIntersection(anySet1, anySet2)
+	fmt.Printf("Первое множество: %v\nВторое множество: %v\nПересечение множеств: %v\n", anySet1, anySet2, anyIntersection)
 }
