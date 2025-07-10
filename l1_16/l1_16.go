@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"sort"
+	"wb_tech/misc"
 )
 
 func quickSort(inputArray []int) []int {
@@ -56,18 +56,10 @@ func quickSort(inputArray []int) []int {
 	return sortedArray
 }
 
-// функция для заполнения слайса случайными числами
-func fillSetWithRandomNumbers(set []int) {
-	for i := range set {
-		randomValue := rand.Int() % 10
-		set[i] = randomValue
-	}
-}
-
 func main() {
 	// сортировка с использованием quickSort
 	originalArr := make([]int, 10)
-	fillSetWithRandomNumbers(originalArr) // заполняем случайными числами
+	misc.FillSetWithRandomNumbers(originalArr) // заполняем случайными числами
 
 	arr := make([]int, len(originalArr)) // создаем слайс для сортировки с помощью sort.Ints
 	copy(arr, originalArr)               // копируем исходный слайс в новый для сохранения исходного состояния
