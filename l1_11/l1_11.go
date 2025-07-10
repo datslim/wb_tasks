@@ -7,13 +7,13 @@ import (
 
 // функция для нахождения пересечения двух неупорядочных множеств (слайсов), содержащих любые данные
 // возвращаемое значение: множество пересечений
-func setsIntersection(firstSet, secondSet []any) []any {
+func setsIntersection[T comparable](firstSet, secondSet []T) []T {
 	seenLength := len(firstSet) + len(secondSet)             // длина словаря в худшем случае равна сумме длины обоих множеств
 	intersectionLength := min(len(firstSet), len(secondSet)) // длина выходного множества не может быть больше длины минимального входного множества
 	// карта для отслеживания вхождений чисел, ключ - элемент, значение - видели ли такой элемент до этого
-	seen := make(map[any]bool, seenLength)
+	seen := make(map[T]bool, seenLength)
 	// слайс вхождений
-	intersection := make([]any, 0, intersectionLength)
+	intersection := make([]T, 0, intersectionLength)
 
 	// проходимся по первому множеству и проставляем флаги на найденые элементы
 	for _, value := range firstSet {
@@ -33,10 +33,10 @@ func setsIntersection(firstSet, secondSet []any) []any {
 }
 
 func main() {
-	firstSet := make([]any, 5) // создаем множество размером 5
-	secondSet := make([]any, 5)
-	misc.FillAnySetWithRandomNumbers(firstSet) // заполняем случайными числами
-	misc.FillAnySetWithRandomNumbers(secondSet)
+	firstSet := make([]int, 5) // создаем множество размером 5
+	secondSet := make([]int, 5)
+	misc.FillSetWithRandomNumbers(firstSet) // заполняем случайными числами
+	misc.FillSetWithRandomNumbers(secondSet)
 	fmt.Printf("Первое множество чисел: %v\nВторое множество чисел: %v\nПересечение множеств чисел: %v\n\n", firstSet, secondSet, setsIntersection(firstSet, secondSet))
 
 	anySet1 := make([]any, 10) // создаем множество размером 10
