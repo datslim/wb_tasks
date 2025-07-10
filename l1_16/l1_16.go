@@ -11,13 +11,24 @@ func quickSort(inputArray []int) []int {
 		return inputArray
 	}
 
-	pivotValue := inputArray[len(inputArray)/2] // получаем опорное значение (средний элемент)
+	// выбираем опорное значение (в зависимости от того, какой элемент средний по значению)
+	// в случае, если все элементы равны, то выбираем первый элемент
+	first, mid, last := inputArray[0], inputArray[len(inputArray)/2], inputArray[len(inputArray)-1]
+	var pivotValue int
+
+	if first <= mid && mid <= last {
+		pivotValue = mid
+	} else if first <= last && last <= mid {
+		pivotValue = last
+	} else {
+		pivotValue = first
+	}
 
 	// создаем слайсы для хранения элементов меньше, больше и равных опорному значению
 	// capacity выбираем исходя из соображений оптимизации памяти
-	lessThanPivot := make([]int, 0, len(inputArray)/2) // предполагаем, что в среднем половина элементов будет меньше опорного значения
-	moreThanPivot := make([]int, 0, len(inputArray)/2) // предполагаем, что в среднем половина элементов будет больше опорного значения
-	equalToPivot := make([]int, 0, 1)                  // предполагаем, что опорный элемент встретится только один раз
+	lessThanPivot := make([]int, 0, len(inputArray)/3) // предполагаем, что в треть элементов будет меньше опорного значения
+	moreThanPivot := make([]int, 0, len(inputArray)/3) // предполагаем, что в треть элементов будет больше опорного значения
+	equalToPivot := make([]int, 0, len(inputArray)/3)  // предполагаем, что треть элементов будет равна опорному
 
 	// разбиваем исходный слайс на три части: меньше, больше и равных опорному значению и добавляем их в соответствующие слайсы
 	for _, element := range inputArray {
@@ -34,8 +45,13 @@ func quickSort(inputArray []int) []int {
 	lessThanPivot = quickSort(lessThanPivot)
 	moreThanPivot = quickSort(moreThanPivot)
 
-	// объединяем полученные слайсы в один
-	return append(append(lessThanPivot, equalToPivot...), moreThanPivot...)
+	// можно было бы использовать append, но тогда пришлось бы перевыделять память после добавления нового элемента
+	sortedArray := make([]int, len(inputArray))                             // сразу создаем слайс для результата с длиной исходного слайса
+	copy(sortedArray, lessThanPivot)                                        // копируем слайс с элементами меньше опорного
+	copy(sortedArray[len(lessThanPivot):], equalToPivot)                    // копируем слайс с опорными элементами
+	copy(sortedArray[len(lessThanPivot)+len(equalToPivot):], moreThanPivot) // копируем слайс с элементами больше опорного
+
+	return sortedArray
 }
 
 // функция для заполнения слайса случайными числами
