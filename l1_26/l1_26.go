@@ -49,11 +49,12 @@ func main() {
 		test5 = "aBCD"
 		test6 = "абвгд"
 	)
-	fmt.Printf("Результат строки abcd: %v\n", uniqueSymbols(test1))
-	fmt.Printf("Результат строки abCdefAaf: %v\n", uniqueSymbols(test2))
-	fmt.Printf("Результат строки aabcd: %v\n", uniqueSymbols(test3))
-	fmt.Printf("Результат строки абуБАКА: %v\n", uniqueSymbols(test4))
-	fmt.Printf("Результат строки aBCD: %v\n", uniqueSymbols(test5))
-	fmt.Printf("Результат строки абвгд: %v\n", uniqueSymbols(test6))
+	fmt.Println("Проверка уникальности символов в строках:")
+	fmt.Printf("Результат для строки abcd: %v\n", uniqueSymbols(test1))
+	fmt.Printf("Результат для строки abCdefAaf: %v\n", uniqueSymbols(test2))
+	fmt.Printf("Результат для строки aabcd: %v\n", uniqueSymbols(test3))
+	fmt.Printf("Результат для строки абуБАКА: %v\n", uniqueSymbols(test4))
+	fmt.Printf("Результат для строки aBCD: %v\n", uniqueSymbols(test5))
+	fmt.Printf("Результат длястроки абвгд: %v\n", uniqueSymbols(test6))
 
 }
