@@ -22,20 +22,20 @@ func NewBigIntFromInt(value int) *BigInt {
 	}
 }
 
-func (a *BigInt) Add(b *BigInt) {
-	a.value.Add(&a.value, &b.value)
+func (a *BigInt) Add(b *BigInt) *big.Int {
+	return a.value.Add(&a.value, &b.value)
 }
 
-func (a *BigInt) Subtract(b *BigInt) {
-	a.value.Sub(&a.value, &b.value)
+func (a *BigInt) Subtract(b *BigInt) *big.Int {
+	return a.value.Sub(&a.value, &b.value)
 }
 
-func (a *BigInt) Divide(b *BigInt) {
-	a.value.Div(&a.value, &b.value)
+func (a *BigInt) Divide(b *BigInt) *big.Int {
+	return a.value.Div(&a.value, &b.value)
 }
 
-func (a *BigInt) Multiply(b *BigInt) {
-	a.value.Mul(&a.value, &b.value)
+func (a *BigInt) Multiply(b *BigInt) *big.Int {
+	return a.value.Mul(&a.value, &b.value)
 }
 
 func (a *BigInt) String() string {
@@ -52,20 +52,20 @@ func main() {
 	fmt.Printf("A = %v\nB = %v\n\n", bigA.value.String(), bigB.value.String())
 
 	fmt.Printf("%v + %v = ", bigA.value.String(), bigB.value.String())
-	bigA.Add(bigB) // складываем
-	fmt.Printf("%v\n\n", bigA.String())
+	add := bigA.Add(bigB) // складываем и сохраняем копию результата в переменную add
+	fmt.Printf("%v\n\n", add.String())
 
 	fmt.Printf("%v * %v = ", bigA.value.String(), bigB.value.String())
-	bigA.Multiply(bigB) // умножаем
-	fmt.Printf("%v\n\n", bigA.String())
+	multiply := bigA.Multiply(bigB) // умножаем и сохраняем копию результата в переменную multiply
+	fmt.Printf("%v\n\n", multiply.String())
 
 	fmt.Printf("%v / %v = ", bigA.value.String(), bigB.value.String())
-	bigA.Divide(bigB) // делим
-	fmt.Printf("%v\n\n", bigA.String())
+	divide := bigA.Divide(bigB) // делим и сохраняем копию результата в переменную divide
+	fmt.Printf("%v\n\n", divide.String())
 
 	fmt.Printf("%v - %v = ", bigA.value.String(), bigB.value.String())
-	bigA.Subtract(bigB) // вычитаем
-	fmt.Printf("%v\n\n", bigA.String())
+	subtract := bigA.Subtract(bigB) // вычитаем и сохраняем копию результата в переменную subtract
+	fmt.Printf("%v\n\n", subtract.String())
 
 	endA := bigA // сохраняем конечное значение переменной А, для сравнения с исходным значением, если они равны - значит вычисления были точными
 
