@@ -10,7 +10,7 @@ func FillSetWithRandomNumbers(set []int) {
 	}
 }
 
-// функция для заполнения слайса типа any случайными значениями
+// функция для заполнения слайса типа any случайными значениями разных типов
 func FillSetWithRandomValues(set []any) {
 	// возможные значения для записи
 	possibleValues := []any{
@@ -19,6 +19,20 @@ func FillSetWithRandomValues(set []any) {
 		1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9,
 		true, false,
 		nil, "golang", "programming", 42, 3.1415,
+	}
+
+	for i := range set {
+		randomIndex := rand.Intn(len(possibleValues))
+		set[i] = possibleValues[randomIndex]
+	}
+}
+
+// функция для заполнения слайса случайными значениями строками
+func FillSetWithRandomStrings(set []string) {
+	// возможные значения для записи
+	possibleValues := []string{
+		"apple", "banana", "orange", "l1", "webdev", "wb-tech", "cat", "dog", "golang", "programming",
+		"computer", "science", "rocket", "monitor", "concurrency", "multi-threading",
 	}
 
 	for i := range set {
