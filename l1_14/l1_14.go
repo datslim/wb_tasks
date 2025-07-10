@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"wb_tech/misc"
+)
 
 // функция для определения типа переменной в рантайме.
 // any - это алиас для пустого интерфейса (любой тип)
@@ -26,7 +29,16 @@ func detectType(variable any) string {
 func main() {
 	variablesOfDifferentTypes := []any{25, "Lorem Ipsum", true, make(chan int), make(chan string), nil}
 
-	for _, currentType := range variablesOfDifferentTypes {
-		fmt.Println(detectType(currentType))
+	for _, currentVariable := range variablesOfDifferentTypes {
+		fmt.Printf("%v is %v\n", currentVariable, detectType(currentVariable))
+	}
+
+	randomVariablesOfDifferentTypes := make([]any, 10)
+	misc.FillSetWithRandomValues(randomVariablesOfDifferentTypes)
+
+	// при попадании числа с плавающей точкой, мы получим unknown type поскольку в задании,
+	// их не нужно определять
+	for _, currentVariable := range randomVariablesOfDifferentTypes {
+		fmt.Printf("%v is %v\n", currentVariable, detectType(currentVariable))
 	}
 }
