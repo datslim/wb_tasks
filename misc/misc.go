@@ -10,14 +10,6 @@ func FillSetWithRandomNumbers(set []int) {
 	}
 }
 
-// функция для заполнения any случайными числами
-func FillAnySetWithRandomNumbers(set []any) {
-	for i := range set {
-		randomValue := rand.Int() % 10
-		set[i] = randomValue
-	}
-}
-
 // функция для заполнения слайса типа any случайными значениями
 func FillSetWithRandomValues(set []any) {
 	// возможные значения для записи
