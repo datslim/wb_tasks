@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"sort"
-	"wb_tech/misc"
+
+	"github.com/datslim/wb-tech-misc/misc"
 )
 
 // функция, реализующая алгоритм быстрой сортировки

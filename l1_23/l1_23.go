@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"wb_tech/misc"
+
+	"github.com/datslim/wb-tech-misc/misc"
 )
 
 // функция для удаления  i-го элемента из слайса любого типа

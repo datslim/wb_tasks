@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"wb_tech/misc"
+
+	"github.com/datslim/wb-tech-misc/misc"
 )
 
 // функция для определения типа переменной в рантайме.
