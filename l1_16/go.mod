@@ -1,4 +1,4 @@
-module github.com/datslim/wb_tasks
+module l1_16
 
 go 1.24.4
 
