@@ -10,7 +10,7 @@ func generateValues(out chan<- int, values [5]int) {
 	close(out)
 }
 
-// функция для обработки (возведения в квадрат) значений из первого канала и записи в второй
+// функция для обработки (возведения в квадрат) значений из первого канала и записи во второй
 func processValues(in <-chan int, out chan<- int) {
 	for value := range in {
 		out <- value * 2
