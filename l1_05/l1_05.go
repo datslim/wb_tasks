@@ -48,7 +48,7 @@ func main() {
 
 	data := make(chan int) // создаем канал для передачи данных
 
-	// создаем контекст с таймаутом в N секунд и отменяем его по завершении
+	// создаем контекст с таймаутом (таймер) в N секунд и отменяем его по завершении
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(N)*time.Second)
 	defer cancel() // отменяем контекст по завершении
 
